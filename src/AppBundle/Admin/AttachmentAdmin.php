@@ -13,10 +13,15 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class CategoryAdmin extends AbstractAdmin {
+class AttachmentAdmin extends AbstractAdmin {
 
     protected function configureFormFields(FormMapper $formMapper) {
-        $formMapper->add('name', 'text');
+        $formMapper
+                ->with('Content', array('class' => 'col-md-6'))
+                ->add('name', 'text')
+                ->add('type', 'text')
+                ->add('link', 'text')
+                ->end();
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper) {

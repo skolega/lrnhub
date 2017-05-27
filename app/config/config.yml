@@ -16,7 +16,8 @@ framework:
         resource: '%kernel.root_dir%/config/routing.yml'
         strict_requirements: ~
     form: ~
-    csrf_protection: ~
+    csrf_protection:
+        enabled: true
     validation: { enable_annotations: true }
     #serializer: { enable_annotations: true }
     templating:
@@ -75,3 +76,11 @@ sonata_block:
         # enable the SonataAdminBundle block
         sonata.admin.block.admin_list:
             contexts: [admin]
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: AppBundle\Entity\User
+    from_email:
+        address: "abadambuczek@gmail.com"
+        sender_name: "Admin"

@@ -15,3 +15,21 @@ services:
         arguments: [~, AppBundle\Entity\BlogPost, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Blog post }
+    
+    admin.lesson:
+        class: AppBundle\Admin\LessonAdmin
+        arguments: [~, AppBundle\Entity\Lesson, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Lesson }
+            
+    admin.lesson_part:
+        class: AppBundle\Admin\LessonPartAdmin
+        arguments: [~, AppBundle\Entity\LessonPart, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Lesson Part }
+            
+    admin.attachment:
+        class: AppBundle\Admin\AttachmentAdmin
+        arguments: [~, AppBundle\Entity\Attachment, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Attachment }

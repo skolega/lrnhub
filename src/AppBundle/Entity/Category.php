@@ -34,6 +34,11 @@ class Category {
      */
     private $blogPosts;
     
+    /**
+     * @ORM\OneToMany(targetEntity="Lesson", mappedBy="category")
+     */
+    private $lesson;
+    
     public function __toString() {
         return $this->name;
     }
@@ -77,4 +82,62 @@ class Category {
         return $this->name;
     }
 
+
+    /**
+     * Add blogPost
+     *
+     * @param \AppBundle\Entity\BlogPost $blogPost
+     *
+     * @return Category
+     */
+    public function addBlogPost(\AppBundle\Entity\BlogPost $blogPost)
+    {
+        $this->blogPosts[] = $blogPost;
+
+        return $this;
+    }
+
+    /**
+     * Remove blogPost
+     *
+     * @param \AppBundle\Entity\BlogPost $blogPost
+     */
+    public function removeBlogPost(\AppBundle\Entity\BlogPost $blogPost)
+    {
+        $this->blogPosts->removeElement($blogPost);
+    }
+
+    /**
+     * Add lesson
+     *
+     * @param \AppBundle\Entity\Lesson $lesson
+     *
+     * @return Category
+     */
+    public function addLesson(\AppBundle\Entity\Lesson $lesson)
+    {
+        $this->lesson[] = $lesson;
+
+        return $this;
+    }
+
+    /**
+     * Remove lesson
+     *
+     * @param \AppBundle\Entity\Lesson $lesson
+     */
+    public function removeLesson(\AppBundle\Entity\Lesson $lesson)
+    {
+        $this->lesson->removeElement($lesson);
+    }
+
+    /**
+     * Get lesson
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLesson()
+    {
+        return $this->lesson;
+    }
 }
