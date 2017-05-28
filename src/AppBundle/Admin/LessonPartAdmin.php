@@ -22,6 +22,10 @@ class LessonPartAdmin extends AbstractAdmin {
                 ->add('description', 'textarea')
                 ->add('points', 'integer')
                 ->add('order', 'integer')
+                ->add('attachment', 'sonata_type_model', array(
+                    'class' => 'AppBundle\Entity\Attachment',
+                    'property' => 'name',
+                ))
                 ->end();
     }
 

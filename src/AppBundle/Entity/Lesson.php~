@@ -1,0 +1,202 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Lesson
+ *
+ * @ORM\Table(name="lesson")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\LessonRepository")
+ */
+class Lesson
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=1000)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="badge", type="string", length=255)
+     */
+    private $badge;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="lesson")
+     */
+    private $category;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="LessonPart", inversedBy="lesson")
+     */
+    private $lesson_part;
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Lesson
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Lesson
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+    
+      /**
+     * Set badge
+     *
+     * @param string $badge
+     *
+     * @return LessonPart
+     */
+    public function setBadge($badge)
+    {
+        $this->badge = $badge;
+
+        return $this;
+    }
+
+    /**
+     * Get badge
+     *
+     * @return string
+     */
+    public function getBadge()
+    {
+        return $this->badge;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \AppBundle\Entity\Category $category
+     *
+     * @return Lesson
+     */
+    public function setCategory(\AppBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \AppBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->lesson_part = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add lessonPart
+     *
+     * @param \AppBundle\Entity\LessonPart $lessonPart
+     *
+     * @return Lesson
+     */
+    public function addLessonPart(\AppBundle\Entity\LessonPart $lessonPart)
+    {
+        $this->lesson_part[] = $lessonPart;
+
+        return $this;
+    }
+
+    /**
+     * Remove lessonPart
+     *
+     * @param \AppBundle\Entity\LessonPart $lessonPart
+     */
+    public function removeLessonPart(\AppBundle\Entity\LessonPart $lessonPart)
+    {
+        $this->lesson_part->removeElement($lessonPart);
+    }
+
+    /**
+     * Get lessonPart
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getLessonPart()
+    {
+        return $this->lesson_part;
+    }
+}
