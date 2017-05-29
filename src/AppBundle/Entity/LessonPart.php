@@ -41,7 +41,7 @@ class LessonPart {
      * @ORM\Column(name="points", type="integer", nullable=true)
      */
     private $points;
-    
+
     /**
      * @var int
      *
@@ -196,7 +196,6 @@ class LessonPart {
     public function setAttachment(\AppBundle\Entity\Attachment $attachment = null)
     {
         $this->attachment = $attachment;
-
         return $this;
     }
 
@@ -220,7 +219,6 @@ class LessonPart {
     public function addQuestion(\AppBundle\Entity\Question $question)
     {
         $this->questions[] = $question;
-
         return $this;
     }
 
@@ -277,4 +275,5 @@ class LessonPart {
     {
         return $this->lesson;
     }
+
 }

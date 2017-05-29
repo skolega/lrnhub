@@ -31,7 +31,7 @@ class Attachment
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=10, unique=true)
+     * @ORM\Column(name="type", type="string", length=10)
      */
     private $type;
 
@@ -134,40 +134,6 @@ class Attachment
     public function __construct()
     {
         $this->attachment = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add attachment
-     *
-     * @param \AppBundle\Entity\LessonPart $attachment
-     *
-     * @return Attachment
-     */
-    public function addAttachment(\AppBundle\Entity\LessonPart $attachment)
-    {
-        $this->attachment[] = $attachment;
-
-        return $this;
-    }
-
-    /**
-     * Remove attachment
-     *
-     * @param \AppBundle\Entity\LessonPart $attachment
-     */
-    public function removeAttachment(\AppBundle\Entity\LessonPart $attachment)
-    {
-        $this->attachment->removeElement($attachment);
-    }
-
-    /**
-     * Get attachment
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAttachment()
-    {
-        return $this->attachment;
     }
 
     /**
