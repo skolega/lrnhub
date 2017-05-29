@@ -223,38 +223,4 @@ class Question {
         return $this->lesson_part;
     }
 
-
-    /**
-     * Add test
-     *
-     * @param \AppBundle\Entity\Test $test
-     *
-     * @return Question
-     */
-    public function addTest(\AppBundle\Entity\Test $test)
-    {
-        $this->test[] = $test;
-
-        return $this;
-    }
-
-    /**
-     * Remove test
-     *
-     * @param \AppBundle\Entity\Test $test
-     */
-    public function removeTest(\AppBundle\Entity\Test $test)
-    {
-        $this->test->removeElement($test);
-    }
-
-    /**
-     * Get test
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTest()
-    {
-        return $this->test;
-    }
 }
