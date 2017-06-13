@@ -94,4 +94,3 @@ class Notification
         return $this->isReaded;
     }
 }
-

@@ -13,27 +13,27 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class TestAdmin extends AbstractAdmin {
+class AnswerAdmin extends AbstractAdmin {
 
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
                 ->with('Content', array('class' => 'col-md-6'))
-                ->add('name', 'text')
-                ->add('description', 'textarea')
-                ->add('questions', 'sonata_type_model', array(
-                    'multiple' => true, 
-                    'by_reference' => false,
-                    'class' => 'AppBundle\Entity\Question',
+                ->add('text', 'text')
+                ->add('is_correct','choice', array(
+                    'choices' => array(
+                        'no' => false,
+                        'yes' => true,
+                    )
                 ))
                 ->end();
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper) {
-        $datagridMapper->add('name');
+        $datagridMapper->add('text');
     }
 
     protected function configureListFields(ListMapper $listMapper) {
-        $listMapper->addIdentifier('name');
+        $listMapper->addIdentifier('text');
     }
 
 }

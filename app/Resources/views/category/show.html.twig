@@ -5,8 +5,8 @@
     <div id="wrapper">
         <div id="container">
             <ul>
-            {% for category in categories %}
-                <li><a class="" href="{{ path('category_show', { 'id': category.id })}}">{{category.name}}</a></li>
+            {% for lesson in lessons %}
+                <li><a class="" href="">{{lesson.name}}</a></li>
             {% endfor %}
             </ul>
         </div>

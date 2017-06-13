@@ -24,15 +24,14 @@ class LessonPartAdmin extends AbstractAdmin {
                 ->add('lesson_order', 'integer')
                 ->end()
                 ->with('More', array('class' => 'col-md-6'))
-                 ->add('attachment', 'sonata_type_model', array(
+                ->add('attachment', 'sonata_type_model', array(
                     'class' => 'AppBundle\Entity\Attachment',
                     'property' => 'name',
                 ))
                 ->add('questions', 'sonata_type_model', array(
-                    'multiple' => true, 
+                    'multiple' => true,
                     'by_reference' => false,
                     'class' => 'AppBundle\Entity\Question',
-                    'property' => 'name',
                 ))
                 ->end();
     }

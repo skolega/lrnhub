@@ -45,3 +45,9 @@ services:
         arguments: [~, AppBundle\Entity\Test, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, label: Test }
+            
+    answer.test:
+        class: AppBundle\Admin\AnswerAdmin
+        arguments: [~, AppBundle\Entity\Answer, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Answer }

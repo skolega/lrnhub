@@ -3,8 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/learnhub/app/Resources/views/default/index.html.twig</file>
-            <file>file:/C:/xampp/htdocs/learnhub/app/Resources/views/base.html.twig</file>
+            <file>file:/C:/xampp/htdocs/learnhub/src/AppBundle/Entity/Question.php</file>
+            <file>file:/C:/xampp/htdocs/learnhub/src/AppBundle/Admin/LessonAdmin.php</file>
+            <file>file:/C:/xampp/htdocs/learnhub/src/AppBundle/Admin/LessonPartAdmin.php</file>
+            <file>file:/C:/xampp/htdocs/learnhub/src/AppBundle/Entity/Answer.php</file>
+            <file>file:/C:/xampp/htdocs/learnhub/src/AppBundle/Admin/QuestionAdmin.php</file>
         </group>
     </open-files>
 </project-private>

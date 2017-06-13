@@ -24,9 +24,9 @@ class Question {
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="text", type="string", length=1200)
      */
-    private $name;
+    private $text;
 
     /**
      * @var string
@@ -36,23 +36,7 @@ class Question {
     private $type;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="string", length=1000)
-     */
-    private $description;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="correctAnswer", type="string", length=255)
-     */
-    private $correctAnswer;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Answers", type="string", length=1200)
+     * @ORM\ManyToMany(targetEntity="Answer", inversedBy="question")
      */
     private $answers;
 
@@ -66,11 +50,17 @@ class Question {
      */
     private $test;
 
+    public function __toString() {
+        return $this->id. '.) ' .$this->text;
+    }
+
     /**
      * Constructor
      */
     public function __construct() {
+        $this->answers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->lesson_part = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->test = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -83,25 +73,25 @@ class Question {
     }
 
     /**
-     * Set name
+     * Set text
      *
-     * @param string $name
+     * @param string $text
      *
      * @return Question
      */
-    public function setName($name) {
-        $this->name = $name;
+    public function setText($text) {
+        $this->text = $text;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get text
      *
      * @return string
      */
-    public function getName() {
-        return $this->name;
+    public function getText() {
+        return $this->text;
     }
 
     /**
@@ -127,66 +117,31 @@ class Question {
     }
 
     /**
-     * Set description
+     * Add answer
      *
-     * @param string $description
+     * @param \AppBundle\Entity\Answer $answer
      *
      * @return Question
      */
-    public function setDescription($description) {
-        $this->description = $description;
+    public function addAnswer(\AppBundle\Entity\Answer $answer) {
+        $this->answers[] = $answer;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Remove answer
      *
-     * @return string
+     * @param \AppBundle\Entity\Answer $answer
      */
-    public function getDescription() {
-        return $this->description;
-    }
-
-    /**
-     * Set correctAnswer
-     *
-     * @param string $correctAnswer
-     *
-     * @return Question
-     */
-    public function setCorrectAnswer($correctAnswer) {
-        $this->correctAnswer = $correctAnswer;
-
-        return $this;
-    }
-
-    /**
-     * Get correctAnswer
-     *
-     * @return string
-     */
-    public function getCorrectAnswer() {
-        return $this->correctAnswer;
-    }
-
-    /**
-     * Set answers
-     *
-     * @param string $answers
-     *
-     * @return Question
-     */
-    public function setAnswers($answers) {
-        $this->answers = $answers;
-
-        return $this;
+    public function removeAnswer(\AppBundle\Entity\Answer $answer) {
+        $this->answers->removeElement($answer);
     }
 
     /**
      * Get answers
      *
-     * @return string
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getAnswers() {
         return $this->answers;
@@ -223,7 +178,6 @@ class Question {
         return $this->lesson_part;
     }
 
-
     /**
      * Add test
      *
@@ -231,8 +185,7 @@ class Question {
      *
      * @return Question
      */
-    public function addTest(\AppBundle\Entity\Test $test)
-    {
+    public function addTest(\AppBundle\Entity\Test $test) {
         $this->test[] = $test;
 
         return $this;
@@ -243,8 +196,7 @@ class Question {
      *
      * @param \AppBundle\Entity\Test $test
      */
-    public function removeTest(\AppBundle\Entity\Test $test)
-    {
+    public function removeTest(\AppBundle\Entity\Test $test) {
         $this->test->removeElement($test);
     }
 
@@ -253,8 +205,8 @@ class Question {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getTest()
-    {
+    public function getTest() {
         return $this->test;
     }
+
 }
